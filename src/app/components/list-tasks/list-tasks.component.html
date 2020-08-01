@@ -1,0 +1,15 @@
+<div class="row">
+    <div class="col-12" *ngIf="tasks.length == 0 ; else isNotEmpty">
+        <div class="jumbotron">
+            <h2 class="display-4">No hay tareas creadas</h2>
+        </div>
+    </div>
+
+    <ng-template #isNotEmpty>
+        <div class="col-12">
+            <mat-list role="list">
+                <mat-list-item role="listitem" *ngFor="let task of tasks">{{ task }}</mat-list-item>
+            </mat-list>
+        </div>
+    </ng-template>
+</div>
