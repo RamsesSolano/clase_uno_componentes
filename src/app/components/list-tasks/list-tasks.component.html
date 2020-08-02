@@ -1,4 +1,21 @@
 <div class="row">
+    <div class="col-6">
+        <form class="example-form">
+            <mat-form-field class="example-full-width">
+                <mat-label>Tarea</mat-label>
+                <input matInput [formControl]="emailFormControl" placeholder="Una tarea">
+                <mat-error *ngIf="emailFormControl.hasError('required')">
+                    Task no puede esta vacio
+                </mat-error>
+            </mat-form-field>
+        </form>
+    </div>
+    <div class="col-6 align-middle">
+        <button mat-raised-button color="primary" [disabled]="emailFormControl.hasError('required')" (click)="addToTasks()">Agregar</button>
+    </div>
+</div>
+
+<div class="row">
     <div class="col-12" *ngIf="tasks.length == 0 ; else isNotEmpty">
         <div class="jumbotron">
             <h2 class="display-4">No hay tareas creadas</h2>
@@ -8,7 +25,17 @@
     <ng-template #isNotEmpty>
         <div class="col-12">
             <mat-list role="list">
-                <mat-list-item role="listitem" *ngFor="let task of tasks">{{ task }}</mat-list-item>
+                <mat-list-item role="listitem" *ngFor="let task of tasks; let i = index">
+                    <div class="row">
+                        <div class="col-8">
+                            {{ task }}
+                        </div>
+                        <div class="col-4">
+                            <button mat-raised-button color="warn" (click)="deleteElement( i )">Borrar</button>
+                        </div>
+                    </div>
+
+                </mat-list-item>
             </mat-list>
         </div>
     </ng-template>

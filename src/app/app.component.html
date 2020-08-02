@@ -6,24 +6,8 @@
                     <h1>Listado de tareas</h1>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-6">
-                    <mat-form-field>
-                        <mat-label>Clearable input</mat-label>
-                        <input matInput [formControl]="taskFormControl" placeholder="Nueva Tarea">
-                        <mat-error *ngIf="!taskFormControl.hasError('required')">
-                            Please enter a valid task name
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-                <div class="col-6 align-middle">
-                    <mat-form-field>
-                        <button mat-raised-button color="primary" [disabled]="" (click)="addToTasks()">Agregar</button>
-                    </mat-form-field>
-                </div>
-            </div>
 
-            <app-list-tasks [tasks]="tasks"></app-list-tasks>
+            <app-list-tasks></app-list-tasks>
         </div>
     </div>
 </div>
